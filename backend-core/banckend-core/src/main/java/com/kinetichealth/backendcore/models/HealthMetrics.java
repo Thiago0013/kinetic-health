@@ -6,30 +6,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "exercises")
+@Table(name = "health_metrics")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Exercises {
+public class HealthMetrics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "workout_id")
-    private Workouts workout;
+    @JoinColumn(name = "user_id")
+    private Users user;
 
+    private Double caloriesBurned;
 
     @Column(nullable = false)
-    private String exerciseName;
-
-    private Integer sets;
-    private Integer reps;
-    private Integer durationSeconds;
-    private Double weightKg;
+    private LocalDateTime metricDate;
 }
