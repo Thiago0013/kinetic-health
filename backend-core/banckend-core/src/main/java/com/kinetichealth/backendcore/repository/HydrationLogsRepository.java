@@ -1,15 +1,15 @@
 package com.kinetichealth.backendcore.repository;
 
+import com.kinetichealth.backendcore.models.HydrationLogs;
 import com.kinetichealth.backendcore.models.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, UUID> {
-    Optional<Users> findByEmail(String email);
+public interface HydrationLogsRepository extends JpaRepository<HydrationLogs, UUID> {
 
-    boolean existsByEmail(String email);
+    List<HydrationLogs> findAllByUser(Users user);
 }
